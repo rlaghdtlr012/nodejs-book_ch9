@@ -65,5 +65,12 @@ router.get('/kakao/callback', passport.authenticate('kakao', {
 }), (req, res) => {
   res.redirect('/');
 });
+// GET /auth/kakao로 좁근하면 카카오 로그인 과정 시작.
+router.get('/kakao', passport.authenticate('kakao'));
+router.get('/kakao/callback', passport.authenticate('kakao', {
+    failureRedirect: '/', // 카카오 로그인이 실패했을 때의 리다이렉트 설정
+}), (req, res) => {
+    res.redirect('/');
+})
 
 module.exports = router;

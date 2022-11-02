@@ -15,7 +15,7 @@ module.exports = (passport) => {
             if( exUser ) {
                 const result = await bcrypt.compare(password, exUser.password);
                 if(result){
-                    done(null, exUser); // 비밀번호까지 비교해서 일치한다면, done 함수의 두 번째 인자로 사용자 정보를 넣어 보냄
+                    done(null, exUser); // 비밀번호까지 비교해서 일치한다면, done 함수의 두 번째 인자로 사용자 정보를 넣어 보냄. 첫번째 인자는 서버쪽에서 에러가 발생하였을 때 사용
                 } else {
                     done(null, false, { message: '비밀번호가 일치하지 않습니다.'}); // 두번째 인자를 사용하지 않을 때는 로그인에 실패했을때뿐.
                 }
